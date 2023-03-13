@@ -29,8 +29,6 @@ public class PaymentRepository {
                 paymentList.add(payment);
             }
             br.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
