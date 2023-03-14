@@ -42,15 +42,12 @@ public class Main extends Application {
                 Optional<ButtonType> result = exitAlert.showAndWait();
                 if (result.get() == ButtonType.YES){
                     //Stage stage = (Stage) this.getScene().getWindow();
-                    System.out.println("Incasari cash: "+service.getTotalAmount(PaymentType.Cash));
-                    System.out.println("Incasari card: "+service.getTotalAmount(PaymentType.Card));
+                    System.out.println("Incasari cash: "+service.getTotalAmount(PaymentType.CASH));
+                    System.out.println("Incasari card: "+service.getTotalAmount(PaymentType.CARD));
 
                     primaryStage.close();
                 }
                 // consume event
-                else if (result.get() == ButtonType.NO){
-                    event.consume();
-                }
                 else {
                     event.consume();
 
