@@ -54,6 +54,7 @@ class SavepaymentECPTest {
         assertTrue(found);
     }
 
+    @ParameterizedTest
     @ValueSource(ints = { 1, 2, 3 })
     @Tag("valid")
     void testValid2(Integer tableNumber) throws IOException {
@@ -88,7 +89,7 @@ class SavepaymentECPTest {
     }
 
     @RepeatedTest(value = 5, name = "{displayName} {currentRepetition}/{totalRepetitions}")
-    @DisplayName("InvalidTest")
+    @DisplayName("InvalidTest2")
     @Tag("invalid")
     void testInvalid2() throws IOException {
         int tableNumber = 0;
