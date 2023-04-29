@@ -11,7 +11,7 @@ import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SavepayementBVATest {
+class SavepaymentBVATest {
 
     PaymentRepository paymentRepository;
     String FILE_PATH="data/payments.txt";
