@@ -14,3 +14,7 @@ A
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+[
++src/main/java/pizzashop/model/MenuData.java,9\4\94327ec84e91beec500022cd5398ce516fe75f04
+Z
+*src/main/java/pizzashop/model/Payment.java,b\0\b0e48405f0ebddab4ecea2ba722dcd0546d61cea
