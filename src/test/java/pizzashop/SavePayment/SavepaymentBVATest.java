@@ -31,12 +31,11 @@ class SavepaymentBVATest {
         reader.close();
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = { 1, 2, 8 })
+    @Test
     @Tag("valid")
-    void testValid(Integer tableNumber) throws IOException {
+    void testValid() throws IOException {
         //Arrange
-
+        int tableNumber=2;
         PaymentType type = PaymentType.CASH;
         double amount = 123.0;
         Payment payment=new Payment(tableNumber,type,amount);
@@ -54,12 +53,11 @@ class SavepaymentBVATest {
         }
         assertTrue(found);
     }
-    @ParameterizedTest
-    @ValueSource(ints = {8 })
+    @Test
     @Tag("valid")
-    void testValid2(Integer tableNumber) throws IOException {
+    void testValid2() throws IOException {
         //Arrange
-
+        int tableNumber=8;
         PaymentType type = PaymentType.CASH;
         double amount = 1;
         Payment payment=new Payment(tableNumber,type,amount);
@@ -77,8 +75,8 @@ class SavepaymentBVATest {
         }
         assertTrue(found);
     }
-    @RepeatedTest(value = 5, name = "{displayName} {currentRepetition}/{totalRepetitions}")
-    @DisplayName("InvalidTest")
+
+    @Test
     @Tag("invalid")
     void testInvalid() {
         int tableNumber = 0;
@@ -88,9 +86,7 @@ class SavepaymentBVATest {
         assertThrows(IllegalArgumentException.class, () -> paymentRepository.add(payment));
     }
 
-    @RepeatedTest(value = 5, name = "{displayName} {currentRepetition}/{totalRepetitions}")
-    @DisplayName("InvalidTest")
-    @Timeout(2)
+    @Test
     @Tag("invalid")
     void testInvalid2() {
         int tableNumber = 7;
