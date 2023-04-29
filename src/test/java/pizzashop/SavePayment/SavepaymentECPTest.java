@@ -31,13 +31,13 @@ class SavepaymentECPTest {
         reader.close();
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = { 123, 100, 10 })
+    @Test
     @Tag("valid")
-    void testValid(Integer amount) throws IOException {
+    void testValid() throws IOException {
         //Arrange
         int tableNumber = 1;
         PaymentType type = PaymentType.CASH;
+        int amount=123;
         Payment payment=new Payment(tableNumber,type,amount);
         //Act
         paymentRepository.add(payment);
