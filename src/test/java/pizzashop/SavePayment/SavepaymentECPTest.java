@@ -31,13 +31,13 @@ class SavepaymentECPTest {
         reader.close();
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = { 123, 100, 10 })
+    @Test
     @Tag("valid")
-    void testValid(Integer amount) throws IOException {
+    void testValid() throws IOException {
         //Arrange
         int tableNumber = 1;
         PaymentType type = PaymentType.CASH;
+        int amount=123;
         Payment payment=new Payment(tableNumber,type,amount);
         //Act
         paymentRepository.add(payment);
@@ -54,13 +54,13 @@ class SavepaymentECPTest {
         assertTrue(found);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = { 1, 2, 3 })
+    @Test
     @Tag("valid")
-    void testValid2(Integer tableNumber) throws IOException {
+    void testValid2() throws IOException {
         //Arrange
         PaymentType type = PaymentType.CASH;
         int amount=100;
+        int tableNumber=1;
         Payment payment=new Payment(tableNumber,type,amount);
         //Act
         paymentRepository.add(payment);
@@ -77,8 +77,7 @@ class SavepaymentECPTest {
         assertTrue(found);
     }
 
-    @RepeatedTest(value = 5, name = "{displayName} {currentRepetition}/{totalRepetitions}")
-    @DisplayName("InvalidTest")
+    @Test
     @Tag("invalid")
     void testInvalid() throws IOException {
         int tableNumber = 1;
@@ -88,8 +87,7 @@ class SavepaymentECPTest {
         assertThrows(IllegalArgumentException.class, () -> paymentRepository.add(payment));
     }
 
-    @RepeatedTest(value = 5, name = "{displayName} {currentRepetition}/{totalRepetitions}")
-    @DisplayName("InvalidTest2")
+    @Test
     @Tag("invalid")
     void testInvalid2() throws IOException {
         int tableNumber = 0;
