@@ -8,12 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+
 public class PaymentRepository {
     private static String filename = "data/payments.txt";
     private List<Payment> paymentList;
 
     public PaymentRepository() {
         this.paymentList = new ArrayList<>();
+        readPayments();
+    }
+    //for testing only
+    public void init(List<Payment> payments) {
+        this.paymentList = payments;
         readPayments();
     }
 
@@ -49,7 +55,7 @@ public class PaymentRepository {
         if (payment.getAmount() < 1 || payment.getTableNumber() < 1 || payment.getTableNumber() > 8)
             throw new IllegalArgumentException();
         paymentList.add(payment);
-        writeAll();
+        //writeAll();//for testing
     }
 
     public List<Payment> getAll() {
@@ -59,18 +65,19 @@ public class PaymentRepository {
     public void writeAll() {
         //ClassLoader classLoader = PaymentRepository.class.getClassLoader();
         File file = new File(filename);
-
-        BufferedWriter bw = null;
-        try {
-            bw = new BufferedWriter(new FileWriter(file));
-            for (Payment p : paymentList) {
-                System.out.println(p.toString());
-                bw.write(p.toString());
-                bw.newLine();
+        if (paymentList.size()!=0) {
+            BufferedWriter bw = null;
+            try {
+                bw = new BufferedWriter(new FileWriter(file));
+                for (Payment p : paymentList) {
+                    System.out.println(p.toString());
+                    bw.write(p.toString());
+                    bw.newLine();
+                }
+                bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
