@@ -21,18 +21,18 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class PaymentRepositoryTest {
+public class PaymentRepositoryTest {
 
     private static PaymentRepository paymentRepository;
     private static Payment payment;
 
     @BeforeAll
-    static void setUp() {
+    public static void setUp() {
         paymentRepository = new PaymentRepository();
     }
 
     @BeforeEach
-    void beforeEach() {
+    public void beforeEach() {
         payment = mock(Payment.class);
     }
 

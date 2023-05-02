@@ -11,17 +11,17 @@ public class PaymentTest {
 
 
     @BeforeEach
-    void beforeEach() {
+    public void beforeEach() {
         part = new Payment(1, PaymentType.CASH, 0);
     }
 
     @Test
-    void getAmount() {
+    public void getAmount() {
         assertEquals(0, part.getAmount());
     }
 
     @Test
-    void setAmount() {
+    public void setAmount() {
         part.setAmount(2);
         assertEquals(2, part.getAmount());
     }
