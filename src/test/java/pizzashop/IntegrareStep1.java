@@ -7,7 +7,7 @@ import pizzashop.repository.PaymentRepositoryTest;
 import pizzashop.service.PaymentServiceTest;
 
 
-public class IntegrateStep1 {
+public class IntegrareStep1 {
     @Test
     void allTestsMock()
     {
